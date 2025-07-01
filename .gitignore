@@ -1,0 +1,6 @@
+/data
+src/__pycache__/
+*.egg-info/
+*.csv
+*.txt
+*.pyc
