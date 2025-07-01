@@ -5,6 +5,17 @@ import os
 import sys
 
 def predict(text):
+    """
+    Predict whether a news article or headline is REAL or FAKE.
+
+    Args:
+        text (str): The input news text or headline to classify.
+
+    Returns:
+        str: "REAL" if the model predicts real news, "FAKE" otherwise.
+    Raises:
+        FileNotFoundError: If model or vectorizer files are missing.
+    """
     model_path = "model.pkl"
     vectorizer_path = "vectorizer.pkl"
     if not os.path.exists(model_path) or not os.path.exists(vectorizer_path):
@@ -18,6 +29,15 @@ def predict(text):
 
 
 def predict_batch(file_path):
+    """
+    Predict labels for a batch of news texts from a file.
+
+    Args:
+        file_path (str): Path to a text file with one news article or headline per line.
+
+    Returns:
+        list of tuples: Each tuple contains (input_text, prediction or error message).
+    """
     if not os.path.exists(file_path):
         print(f"Input file '{file_path}' not found.")
         sys.exit(1)
@@ -34,6 +54,10 @@ def predict_batch(file_path):
 
 
 if __name__ == "__main__":
+    """
+    Command-line interface for predicting news labels.
+    Use --text for a single prediction or --file for batch prediction.
+    """
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--text", type=str, help="Single news text to classify.")

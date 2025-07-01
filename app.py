@@ -37,4 +37,4 @@ if st.session_state['prediction'] is not None:
                 writer.writerow(["text", "model_prediction", "user_label"])
             writer.writerow([st.session_state['last_input'], result, feedback])
         st.success("Thank you for your feedback! It will help improve the model.")
-        st.session_state['prediction'] = None  # Reset after feedback
+        st.session_state['prediction'] = None  
